@@ -3,15 +3,18 @@ import { getClient, overlayDrafts } from '../lib/sanity.server'
 import { PreviewSuspense } from 'next-sanity/preview'
 import { lazy } from 'react'
 import Landing from '../components/landing'
+import Homepage from '../components/Homepage/Homepage'
 
 const LandingPreview = lazy(() => import('../components/landing-preview'))
 
 export default function IndexPage({ allPosts, preview }) {
   if (preview) {
     return (
-      <PreviewSuspense fallback="Loading...">
-        <LandingPreview allPosts={allPosts} />
-      </PreviewSuspense>
+      <>
+      
+      <Homepage />
+      
+      </>
     )
   }
 

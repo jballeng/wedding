@@ -3,6 +3,7 @@ import Head from 'next/head'
 import { CMS_NAME } from '../lib/constants'
 import Container from './container'
 import Intro from './intro'
+import Homepage from './Homepage/Homepage'
 import HeroPost from './hero-post'
 import MoreStories from './more-stories'
 
@@ -10,12 +11,10 @@ export default function Landing({ allPosts, preview }) {
   const [heroPost, ...morePosts] = allPosts || []
   return (
     <>
-      <Layout preview={preview}>
-        <Head>
-          <title>{`Next.js Blog Example with ${CMS_NAME}`}</title>
-        </Head>
+      <Layout>
+        
         <Container>
-          <Intro />
+          <Homepage />
           {heroPost && (
             <HeroPost
               title={heroPost.title}
