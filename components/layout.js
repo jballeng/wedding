@@ -5,8 +5,6 @@ import Navbar from './Navbar/Navbar'
 import { useRouter } from 'next/router'
 
 export default function Layout({ children }) {
-  const router = useRouter()
-  console.log(router , 'routes')
   return (
     <>
       <Meta />
@@ -15,7 +13,7 @@ export default function Layout({ children }) {
         {/* <Alert preview={preview} /> */}
         <main>{children}</main>
       </div>
-      <Footer />
+      
     </>
   )
 }

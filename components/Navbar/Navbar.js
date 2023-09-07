@@ -1,7 +1,7 @@
 // components/Navbar.tsx
 import { React, useRef, useState, useEffect } from "react";
-import styles from "./styles.module.css";
-
+import styles from "./styles.module.scss";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
@@ -12,11 +12,16 @@ const Navbar = () => {
     <header className={styles.navbar}>
       <div className={styles.navLinksContainer}>
         <div className={styles.titleLink}>
-          <Link href="/" className={styles.titleFlexLink}>
-            <p>Jake</p>
-            <p>&</p>
-            <p>Reagan</p>
-          </Link>
+          {/* <Link href="/" className={styles.titleFlexLink}>
+            <Image
+              className={styles.logo}
+              src="/logo.jpeg"
+              width={100}
+              height={100}
+              alt="Logo"
+            />
+            
+          </Link> */}
         </div>
         <div className={styles.menuLinks}>
         <Link href="/about" className={styles.navLinks}>

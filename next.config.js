@@ -6,4 +6,5 @@ module.exports = {
       { hostname: 'source.unsplash.com' },
     ],
   },
+  
 }

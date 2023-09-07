@@ -1,0 +1,194 @@
+.formInputs {
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+}
+
+#extraInfo {
+  width: 100%;
+}
+
+.block {
+  :global{
+    .Dropdown-root{
+      position: relative;
+      margin: 10px 0 10px 0;
+      width: 100%;
+    }
+    .Dropdown-control{
+      display: flex;
+      position: relative;
+      overflow: hidden;
+      background-color: white;
+      border-radius: 5px;
+      box-sizing: border-box;
+      cursor: pointer;
+      outline: none;
+      padding: 8px;
+      transition: all 200ms ease;
+      width: 100%;
+      margin: 10px 0px 10px 0;
+      -webkit-padding-start: 15px;
+    }
+    .Dropdown-menu{
+      background-color: white;
+      border: 1px solid #ccc;
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+      box-sizing: border-box;
+      position: absolute;
+      top: 100%;
+      width: 100%;
+      align-items: center;
+      max-height: 33vh;
+      overflow: scroll;
+    }
+    .Dropdown-placeholder{
+      width: 100%;
+    }
+    .states{
+      box-sizing: border-box;
+      display: flex;
+      padding: 5px 0;
+      cursor: pointer;
+      width: 100%;
+      align-items: center;
+      .is-selected{
+        background-color: #f2f9fc;
+        color: #333;
+      }
+      :last-child{
+        border-bottom-right-radius: 2px;
+        border-bottom-left-radius: 2px;
+      }
+      
+    }
+    .Dropdown-option:hover{
+      background-color: #999;
+    }
+    .is-open .Dropdown-arrow{
+      border-color: transparent transparent #999;
+      border-width: 0 5px 5px;
+    }
+    .Dropdown-arrow{
+      border-color: #999 transparent transparent;
+      border-width: 5px 5px 0;
+      border-style: solid;
+      content: ' ';
+      display: block;
+      height: 0;
+      position: absolute;
+      right: 10px;
+      top: 14px;
+      width: 0;
+    }
+  }
+  display: flex;
+  flex-direction: column;
+
+  button {
+    padding: 5px;
+    font-size: 20px;
+    width: 20%;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin-top: 25px;
+    background-color: #1c3a4b;
+    color: rgb(248 239 227 / var(--tw-bg-opacity));
+  }
+
+  button:hover {
+    background-color: rgb(248 239 227 / var(--tw-bg-opacity));
+    color: #1c3a4b;
+  }
+  
+}
+
+.errors {
+  color: red;
+  font-size: 0.75rem;
+}
+
+.container {
+  padding: 0;
+
+  padding: 25px 0 100px 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
+    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-weight: 400;
+  min-height: 100vh;
+  display: flex;
+  color: #1c3a4b;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  border-radius: 10px;
+  width: 100%;
+
+  flex-direction: column;
+
+  input {
+    line-height: .5px;
+    margin: 10px 0 10px 0px;
+    border-color: rgb(31, 28, 28);
+    padding: 10px;
+    border-radius: 5px;
+
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  textarea {
+    margin: 10px 0 10px 0px;
+    padding: 5px;
+    border-color: rgb(31, 28, 28);
+    border-radius: 5px;
+
+    font-size: 20px;
+    width: 100%;
+  }
+
+  h1 {
+    text-align: center;
+    font-weight: 600;
+  }
+
+}
+
+
+
+.name {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+  }
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 25px;
+  color: #1c3a4b;
+  text-align: center;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 500;
+
+  }
+
+  span {
+    width: 60%;
+    padding: 15px 25px 0 25px;
+    font-size: 1rem;
+  }
+}
