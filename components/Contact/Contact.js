@@ -2,8 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { createSanityUser } from '../../utils/helpers';
 import styles from 'components/Contact/styles.module.scss'
-import { guestInfo } from '../../utils/helpers'
-import { guestListBulk } from '../../utils/helpers';
+import { getGuestList } from '../../sanity/sanity.query';
 
 import {
     checkValidateFirstName,
@@ -19,7 +18,7 @@ import usStates from './states.json'
 
 
 
-const Contact = () => {
+const Contact =  () => {
     const [firstName, setFirstName] = useState('')
     const [firstNameError, setFirstNameError] = useState('')
     const [lastName, setLastName] = useState('')
@@ -39,7 +38,8 @@ const Contact = () => {
     const [zipCode, setZipCode] = useState('')
     const [zipCodeError, setZipCodeError] = useState('')
     const [extraInfo, setExtraInfo] = useState('')
-    const [extraInfoError, setExtraInfoError] = useState('')
+    
+    
     
     const requestBody = {
         firstName: firstName[0]?.toUpperCase() + firstName.substring(1),
@@ -56,57 +56,71 @@ const Contact = () => {
         },
         extra: extraInfo
     }
-    // setProjects: (state, action) => {
-    //     state.projects = action.payload
-    //   }
-   
+    
+    const checkList = async (firstname, lastname) => {
+        const guest = await getGuestList(firstname, lastname)
+       if(guest.length > 0){
+        return guest
+       }else{
+        return false
+       }
+    }
+    
+   checkList()
     const submitHandler = async e => {
-        
-      
         e.preventDefault()
-        const guestList = await guestInfo()
-        guestListBulk()
-        console.log(guestList[0])
-        let test = []
+        let check = []
         if (checkValidateFirstName(firstName).length > 0) {
             setFirstNameError(checkValidateFirstName(firstName))
-            test.push(checkValidateFirstName(firstName)[0]?.message)
+            check.push(checkValidateFirstName(firstName)[0]?.message)
         }
         if (checkValidateLastName(lastName).length > 0) {
             setLastNameError(checkValidateLastName(lastName))
-            test.push(checkValidateLastName(lastName)[0].message)
+            check.push(checkValidateLastName(lastName)[0].message)
         }
         if (checkValidateMiddleName(middleName).length > 0) {
             setMiddleNameError(checkValidateMiddleName(middleName))
-            test.push(checkValidateMiddleName(middleName)[0].message)
+            check.push(checkValidateMiddleName(middleName)[0].message)
         }
         if (checkValidateEmail(email).length > 0) {
             setEmailError(checkValidateEmail(email))
-            test.push(checkValidateEmail(email)[0].message)
+            check.push(checkValidateEmail(email)[0].message)
         }
         if (checkValidatePhone(phone).length > 0) {
             setPhoneError(checkValidatePhone(phone))
-            test.push(checkValidatePhone(phone)[0].message)
+            check.push(checkValidatePhone(phone)[0].message)
         }
         if (checkValidateAddress(address1).length > 0) {
             setAddressOneError(checkValidateAddress(address1))
-            test.push(checkValidateAddress(address1)[0].message)
+            check.push(checkValidateAddress(address1)[0].message)
         }
         if (checkValidateCity(city).length > 0) {
             setCityError(checkValidateCity(city))
-            test.push(checkValidateLastName(lastName)[0].message)
+            check.push(checkValidateLastName(lastName)[0].message)
         }
         if (checkValidateZip(zipCode).length > 0) {
             setZipCodeError(checkValidateZip(zipCode))
-            test.push(checkValidateZip(zipCode)[0].message)
+            check.push(checkValidateZip(zipCode)[0].message)
         }
 
 
-        if (test.length > 0) {
+        if (check.length > 0) {
             // alert('Make sure you filled out everything correctly')
         } else {
-            
-        createSanityUser(requestBody, 'guest')
+            checkList(firstName, lastName).then((response)=>{
+                if(response.length > 0){
+                    createSanityUser(requestBody, 'guest')
+                }else{
+                    createSanityUser(requestBody, 'duplicate').then(
+                        setListRegister(response[0]._id)
+                        // Need the list register function and to verify all if these .then
+                    )
+                }
+            }).then(
+                // need some sort of thank you alert
+            )
+    
+        
         }
 
 
@@ -115,6 +129,7 @@ const Contact = () => {
 
 
     return (
+       
         <>
             <div className={`${styles.intro}`}>
                 <h1>Contact Information</h1>

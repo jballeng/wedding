@@ -1,9 +1,26 @@
 import Layout from "../components/layout"
-export default function faq(){
+import Faq from "../components/Faq/Faq"
+import { getFaqList } from "../sanity/sanity.query"
+const faq = ({data}) => {
+    const { posts } = data
     return(
         <Layout>
-            <h2> The FAQ Page </h2>
+            <Faq posts={posts}/>
         </Layout>
         
     )
 }
+
+export default faq
+
+export async function getServerSideProps() {
+  
+    const posts = await getFaqList()
+    
+    return {
+      
+      props: {
+        data: { posts },
+      },
+    }
+  }

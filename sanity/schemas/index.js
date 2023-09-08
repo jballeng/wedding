@@ -1,16 +1,11 @@
-import guest from "./guest";
-import blockContent from "./blockContent";
-import category from "./category";
-import post from "./post";
-import people from "./people";
+import faq from "./faq";
 import offList from "./offList"
 import guestlist from "./guestlist";
-
+import guest from "./guest"
 export const schemaTypes = [
     guest,
-    blockContent,
-    
-   
+    faq,
     offList,
     guestlist,
+
 ]

@@ -2,9 +2,10 @@ import Image from "next/image";
 import styles from './styles.module.css'
 import React, { useEffect, useRef } from 'react';
 
+
 const Homepage = () => {
   const videoRef = useRef();
-
+  
   useEffect(() => {
       setTimeout(()=>{
           videoRef.current.play()

@@ -4,6 +4,13 @@ export default {
     type: 'document',
     fields: [
         {
+            name: 'register',
+            title: 'Registered?',
+            type: 'boolean',
+           
+            
+        },
+        {
             name: 'firstName',
             title: 'First Name',
             type: 'string',
@@ -19,7 +26,10 @@ export default {
             type: 'string',
 
         },
+        
     ],
+    
+    
     preview: {
         select: {
           title: 'firstName',
