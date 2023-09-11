@@ -17,7 +17,7 @@ const Navbar = () => {
       <div className={styles.section}>
         <Image
           // className={styles.logo}
-          src="/favicon/icon.png"
+          src="/favicon/icon.webp"
           width={150}
           height={125}
           alt="Logo"

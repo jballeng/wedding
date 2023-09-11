@@ -7,27 +7,17 @@ export default function Meta() {
       <link
         rel="apple-touch-icon"
         sizes="180x180"
-        href="/favicon/icon.png"
+        href="/favicon/icon.webp"
       />
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="32x32"
-        href="/favicon/icon.png"
-      />
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="16x16"
-        href="/favicon/icon.png"
-      />
+     
+      
       <link rel="manifest" href="/favicon/site.webmanifest" />
       <link
         rel="mask-icon"
         href="/favicon/safari-pinned-tab.svg"
         color="#000000"
       />
-      <link rel="shortcut icon" href="/favicon/icon.png" />
+      <link rel="shortcut icon" href="/favicon/icon.webp" />
       <meta name='robots' content='noindex' />
       <meta name='googlebot' content='noindex' />
       
