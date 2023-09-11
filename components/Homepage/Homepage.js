@@ -1,34 +1,32 @@
-import Image from "next/image";
-import styles from './styles.module.css'
-import React, { useEffect, useRef } from 'react';
 
+import styles from './styles.module.scss'
+import React, { useEffect, useRef } from 'react';
+import { useRouter } from 'next/router';
 
 const Homepage = () => {
   const videoRef = useRef();
+  const router = useRouter()
   
   useEffect(() => {
       setTimeout(()=>{
-          videoRef.current.play()
-      },1000)
+          videoRef?.current.play()
+      },500)
   }, []);
   return (
     <section className={styles.contentFlex}>
-      <video muted id="myVideo" className={styles.homeVideo} loop ref={videoRef}>
+      {router.isFallback ? (
+        <h1>Loading...</h1>
+      ) : (
+        <video muted id="myVideo" className={styles.homeVideo} loop ref={videoRef}>
         <source
           src={
            '/r-j-website.mp4'
              }
              type="video/mp4"
            />
-      </video>
-      {/* <Image 
-        src='/laughing-pic.webp'
-        width={250}
-        height={250}
-        alt="Picture of the author"
-      /> */}
-        
-     
+      </video>  
+      )}
+      
     </section>
   );
 };

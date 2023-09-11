@@ -1,31 +1,15 @@
-import { indexQuery } from '../lib/queries'
-import { getClient, overlayDrafts } from '../lib/sanity.server'
-import { PreviewSuspense } from 'next-sanity/preview'
-import { lazy } from 'react'
-import Landing from '../components/landing'
 import Homepage from '../components/Homepage/Homepage'
+import { isMobile } from '../utils/helpers'
+import About from '../components/About/About'
+import Layout from "../components/layout"
 
-const LandingPreview = lazy(() => import('../components/landing-preview'))
+export default function IndexPage() {
 
-export default function IndexPage({ allPosts, preview }) {
-  if (preview) {
-    return (
-      <>
-      
+  const is_mobile = isMobile()
+  return (
+    <Layout>
       <Homepage />
-      
-      </>
-    )
-  }
-
-  return <Landing allPosts={allPosts} />
+    </Layout>
+  )
 }
 
-export async function getStaticProps({ preview = false }) {
-  const allPosts = overlayDrafts(await getClient(preview).fetch(indexQuery))
-  return {
-    props: { allPosts, preview },
-    // If webhooks isn't setup then attempt to re-generate in 1 minute intervals
-    revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60,
-  }
-}

@@ -7,19 +7,19 @@ export default function Meta() {
       <link
         rel="apple-touch-icon"
         sizes="180x180"
-        href="/favicon/apple-touch-icon.png"
+        href="/favicon/icon.png"
       />
       <link
         rel="icon"
         type="image/png"
         sizes="32x32"
-        href="/favicon/favicon-32x32.png"
+        href="/favicon/icon.png"
       />
       <link
         rel="icon"
         type="image/png"
         sizes="16x16"
-        href="/favicon/favicon-16x16.png"
+        href="/favicon/icon.png"
       />
       <link rel="manifest" href="/favicon/site.webmanifest" />
       <link
@@ -27,7 +27,10 @@ export default function Meta() {
         href="/favicon/safari-pinned-tab.svg"
         color="#000000"
       />
-      <link rel="shortcut icon" href="/favicon/favicon.ico" />
+      <link rel="shortcut icon" href="/favicon/icon.png" />
+      <meta name='robots' content='noindex' />
+      <meta name='googlebot' content='noindex' />
+      
       <meta name="msapplication-TileColor" content="#000000" />
       <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
       <meta name="theme-color" content="#000" />
@@ -38,7 +41,9 @@ export default function Meta() {
       <title>Jake and Reagan's Wedding Website</title>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-      <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+      <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&family=Roboto:ital,wght@1,100;1,300&display=swap" rel="stylesheet" />
     </Head>
   )
 }

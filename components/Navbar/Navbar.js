@@ -1,41 +1,55 @@
 // components/Navbar.tsx
-import { React, useRef, useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import styles from "./styles.module.scss";
 import Image from "next/image";
-import { useRouter } from "next/router";
 import Link from "next/link";
 
 const Navbar = () => {
-  const { route, pathname } = useRouter();
+  const router = useRouter();
+  const path = router.pathname
+  
+  
 
   return (
-    <header className={styles.navbar}>
-      <div className={styles.navLinksContainer}>
-        <div className={styles.titleLink}>
-          {/* <Link href="/" className={styles.titleFlexLink}>
-            <Image
-              className={styles.logo}
-              src="/logo.jpeg"
-              width={100}
-              height={100}
-              alt="Logo"
-            />
-            
-          </Link> */}
-        </div>
+
+    <div className={styles.navLinksContainer}>
+
+      <div className={styles.section}>
+        <Image
+          // className={styles.logo}
+          src="/favicon/icon.png"
+          width={150}
+          height={125}
+          alt="Logo"
+        />
+      </div>
+      <div className={styles.section}>
+        <h1>
+          JAKE &amp; REAGAN
+        </h1>
+        <h2>
+          APRIL 18, 2024 <span>&#183;</span> IRELAND
+        </h2>
+      </div>
+      <div className={styles.section}>
         <div className={styles.menuLinks}>
-        <Link href="/about" className={styles.navLinks}>
-          About Us
-        </Link>
-        <Link href="/contact" className={styles.navLinks}>
-          Contact Info
-        </Link>
-        <Link href="/faq" className={styles.navLinks}>
-          FAQ
-        </Link>
+          <Link href="/" className={path == '/' ? 'active' : ''}>
+            Home
+          </Link>
+          <Link href="/about" className={path == '/about' ? 'active' : ''} id={styles.aboutUs}>
+            Our Story
+          </Link>
+          <Link href="/contact" className={path == '/contact' ? 'active' : ''} id="contactInfo">
+            Contact Info
+          </Link>
+          <Link href="/faq" className={path == '/faq' ? 'active' : ''} id="faq">
+            FAQ
+          </Link>
         </div>
       </div>
-    </header>
+
+    </div>
+
   );
 };
 export default Navbar;

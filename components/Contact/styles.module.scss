@@ -8,14 +8,18 @@
   width: 100%;
 }
 
+
 .block {
-  :global{
-    .Dropdown-root{
+  display: flex;
+  flex-direction: column;
+  :global {
+    .Dropdown-root {
       position: relative;
       margin: 10px 0 10px 0;
       width: 100%;
     }
-    .Dropdown-control{
+
+    .Dropdown-control {
       display: flex;
       position: relative;
       overflow: hidden;
@@ -30,7 +34,8 @@
       margin: 10px 0px 10px 0;
       -webkit-padding-start: 15px;
     }
-    .Dropdown-menu{
+
+    .Dropdown-menu {
       background-color: white;
       border: 1px solid #ccc;
       box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
@@ -42,34 +47,41 @@
       max-height: 33vh;
       overflow: scroll;
     }
-    .Dropdown-placeholder{
+
+    .Dropdown-placeholder {
       width: 100%;
     }
-    .states{
+
+    .states {
       box-sizing: border-box;
       display: flex;
       padding: 5px 0;
       cursor: pointer;
       width: 100%;
       align-items: center;
-      .is-selected{
+
+      .is-selected {
         background-color: #f2f9fc;
         color: #333;
       }
-      :last-child{
+
+      :last-child {
         border-bottom-right-radius: 2px;
         border-bottom-left-radius: 2px;
       }
-      
+
     }
-    .Dropdown-option:hover{
+
+    .Dropdown-option:hover {
       background-color: #999;
     }
-    .is-open .Dropdown-arrow{
+
+    .is-open .Dropdown-arrow {
       border-color: transparent transparent #999;
       border-width: 0 5px 5px;
     }
-    .Dropdown-arrow{
+
+    .Dropdown-arrow {
       border-color: #999 transparent transparent;
       border-width: 5px 5px 0;
       border-style: solid;
@@ -82,25 +94,35 @@
       width: 0;
     }
   }
-  display: flex;
-  flex-direction: column;
+
+  
 
   button {
     padding: 5px;
     font-size: 20px;
-    width: 20%;
+    max-width: 30%;
+    width: auto;
     border: 2px solid black;
     border-radius: 5px;
     margin-top: 25px;
     background-color: #1c3a4b;
     color: rgb(248 239 227 / var(--tw-bg-opacity));
+
+    @media (max-width: 480px) {
+      max-width: 40%;
+    }
   }
 
   button:hover {
     background-color: rgb(248 239 227 / var(--tw-bg-opacity));
     color: #1c3a4b;
   }
-  
+
+  button:disabled {
+    background-color: rgb(248 239 227 / var(--tw-bg-opacity));
+    color: #1c3a4b;
+  }
+
 }
 
 .errors {
@@ -112,8 +134,8 @@
   padding: 0;
 
   padding: 25px 0 100px 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
-    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  // font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
+  //   Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-weight: 400;
   min-height: 100vh;
   display: flex;
@@ -190,5 +212,17 @@
     width: 60%;
     padding: 15px 25px 0 25px;
     font-size: 1rem;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .intro span {
+    width: 100%;
+  }
+
+  .formInputs {
+    width: 100%;
+    padding: 15px 25px 0 25px;
   }
 }

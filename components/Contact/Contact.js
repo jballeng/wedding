@@ -1,9 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
-import { createSanityUser } from '../../utils/helpers';
+import { createSanityUser, setListRegister } from '../../utils/helpers';
 import styles from 'components/Contact/styles.module.scss'
 import { getGuestList } from '../../sanity/sanity.query';
-
+import { PopUpWrapper } from '../PopUpWrapper';
+import { spinner as Loader } from '../../utils/svgImages';
+import Button from '../../utils/constants';
 import {
     checkValidateFirstName,
     checkValidateMiddleName,
@@ -18,9 +20,13 @@ import usStates from './states.json'
 
 
 
-const Contact =  () => {
+const Contact = () => {
+    const [showLoader, setShowLoader] = useState(false)
+    const [processing, setProcessing] = useState('')
+    const [congratulationPopup, setCongratulationPopup] = useState(false)
     const [firstName, setFirstName] = useState('')
     const [firstNameError, setFirstNameError] = useState('')
+    const [suffix, setSuffix] = useState('')
     const [lastName, setLastName] = useState('')
     const [lastNameError, setLastNameError] = useState('')
     const [middleName, setMiddleName] = useState('')
@@ -34,13 +40,13 @@ const Contact =  () => {
     const [address2, setAddress2] = useState('')
     const [city, setCity] = useState('')
     const [cityError, setCityError] = useState('')
-    const [state, setState] = useState('')
+    const [state, setState] = useState('none')
     const [zipCode, setZipCode] = useState('')
     const [zipCodeError, setZipCodeError] = useState('')
     const [extraInfo, setExtraInfo] = useState('')
-    
-    
-    
+
+
+
     const requestBody = {
         firstName: firstName[0]?.toUpperCase() + firstName.substring(1),
         lastName: lastName[0]?.toUpperCase() + lastName.substring(1),
@@ -56,17 +62,17 @@ const Contact =  () => {
         },
         extra: extraInfo
     }
-    
+
     const checkList = async (firstname, lastname) => {
         const guest = await getGuestList(firstname, lastname)
-       if(guest.length > 0){
-        return guest
-       }else{
-        return false
-       }
+        if (guest.length > 0) {
+            return guest
+        } else {
+            return false
+        }
     }
+
     
-   checkList()
     const submitHandler = async e => {
         e.preventDefault()
         let check = []
@@ -103,24 +109,56 @@ const Contact =  () => {
             check.push(checkValidateZip(zipCode)[0].message)
         }
 
-
+        // if checks return an error
         if (check.length > 0) {
             // alert('Make sure you filled out everything correctly')
         } else {
-            checkList(firstName, lastName).then((response)=>{
-                if(response.length > 0){
-                    createSanityUser(requestBody, 'guest')
-                }else{
-                    createSanityUser(requestBody, 'duplicate').then(
-                        setListRegister(response[0]._id)
-                        // Need the list register function and to verify all if these .then
-                    )
+            setProcessing('Processing...')
+            setShowLoader(true)
+            checkList(firstName, lastName).then((response) => {
+                // If submitted user is in guest list
+                if (response.length > 0) {
+                    // If submitted user has already registered before
+                    
+                    if (response[0].register == true) {
+                        
+
+                        // Create user in the duplicate area
+                        createSanityUser(requestBody, 'duplicate')
+                    } else {
+                        // Create guest in the wedding guest table
+                        createSanityUser(requestBody, 'guest').then(
+                            // Mark the use as registered in the guestlist table
+                            setListRegister(response[0]._id)
+                        )
+                    }
+                } else {
+                    // Submitted user not in guest list so added to the offlist table
+                    createSanityUser(requestBody, 'offlist')
                 }
             }).then(
                 // need some sort of thank you alert
+                setTimeout(() =>{
+                    setCongratulationPopup(true)
+                    setProcessing('')
+                    setShowLoader(false)
+                    setFirstName('')
+                    setLastName('')
+                    setMiddleName('')
+                    setEmail('')
+                    setPhone('')
+                    setAddress1('')
+                    setAddress2('')
+                    setCity('')
+                    setState('none')
+                    setZipCode('')
+                    setExtraInfo('')
+                    setSuffix('')
+                }, 1000)
+
             )
-    
-        
+
+
         }
 
 
@@ -129,10 +167,10 @@ const Contact =  () => {
 
 
     return (
-       
+
         <>
             <div className={`${styles.intro}`}>
-                <h1>Contact Information</h1>
+                {/* <h1>Contact Information</h1> */}
                 <span>
                     Please fill out this form for each member of your party so that we can ensure all
                     guests are detailed appropriately in both save the dates & invites! If you have any questions, please reach out to jakeandreagansayido@gmail.com.
@@ -164,6 +202,7 @@ const Contact =  () => {
                                 id="frm-first"
                                 type="text"
                                 name="firstName"
+                                value={firstName}
                                 onChange={(e) => {
                                     setFirstName(e.currentTarget.value.trim())
                                 }}
@@ -171,8 +210,6 @@ const Contact =  () => {
                                     setFirstNameError(checkValidateFirstName(e.currentTarget.value))
 
                                 }}
-                                // autoComplete="given-name"
-                                
                             />
 
                         </div>
@@ -195,6 +232,7 @@ const Contact =  () => {
                                 id="frm-middle"
                                 type="text"
                                 name="middleName"
+                                value={middleName}
                                 onChange={(e) => {
                                     setMiddleName(e.currentTarget.value.trim());
                                     setMiddleNameError('')
@@ -202,7 +240,7 @@ const Contact =  () => {
                                 onBlur={(e) => {
                                     setMiddleNameError(checkValidateMiddleName(e.currentTarget.value));
                                 }}
-                                
+
                             />
                         </div>
                     </div>
@@ -226,6 +264,7 @@ const Contact =  () => {
                                 id="frm-last"
                                 type="text"
                                 name="lastName"
+                                value={lastName}
                                 onChange={(e) => {
                                     setLastName(e.currentTarget.value.trim());
                                     setLastNameError('')
@@ -233,7 +272,7 @@ const Contact =  () => {
                                 onBlur={(e) => {
                                     setLastNameError(checkValidateLastName(e.currentTarget.value));
                                 }}
-                                
+
                             />
                         </div>
                         <div className={`${styles.block}`}>
@@ -242,8 +281,12 @@ const Contact =  () => {
                                 id="frm-suffix"
                                 type="text"
                                 name="suffix"
-                            // autoComplete="suffix"
-
+                                value={suffix}
+                                onChange={(e) => {
+                                    setSuffix(e.currentTarget.value.trim());
+                                    
+                                }}
+                                
                             />
                         </div>
                     </div>
@@ -266,6 +309,7 @@ const Contact =  () => {
                             id="frm-email"
                             type="email"
                             name="email"
+                            value={email}
                             onChange={(e) => {
                                 setEmail(e.currentTarget.value.trim());
                                 setEmailError('')
@@ -273,11 +317,8 @@ const Contact =  () => {
                             onBlur={(e) => {
                                 setEmailError(checkValidateEmail(e.currentTarget.value));
                             }}
-                            
                         />
                     </div>
-
-
                     <div className={`${styles.block}`}>
                         <label htmlFor="frm-address1">Address Line 1</label>
                         <span
@@ -297,6 +338,7 @@ const Contact =  () => {
                             id="frm-address1"
                             type="text"
                             name="address1"
+                            value={address1}
                             onChange={(e) => {
                                 setAddress1(e.currentTarget.value.trim())
                                 setAddressOneError('')
@@ -304,23 +346,21 @@ const Contact =  () => {
                             onBlur={(e) => {
                                 setAddressOneError(checkValidateAddress(e.currentTarget.value));
                             }}
-                            
                         />
                     </div>
-
                     <div className={`${styles.block}`}>
                         <label htmlFor="frm-address2">Address Line 2</label>
                         <input
                             id="frm-address2"
                             type="text"
                             name="address2"
+                            value={address2}
                             onChange={(e) => {
                                 setAddress2(e.currentTarget.value.trim());
                             }}
-                            
+
                         />
                     </div>
-
                     <div className={`${styles.name}`}>
                         <div className={`${styles.block}`}>
                             <label htmlFor="frm-city">City</label>
@@ -341,6 +381,7 @@ const Contact =  () => {
                                 id="frm-city"
                                 type="text"
                                 name="city"
+                                value={city}
                                 onChange={(e) => {
                                     setCity(e.currentTarget.value.trim())
                                     setCityError('')
@@ -352,7 +393,7 @@ const Contact =  () => {
                         </div>
                         <div className={`${styles.block}`}>
                             <label htmlFor="frm-state">State</label>
-                            <select defaultValue={'none'} className='Dropdown-control' onChange={(e) => { setState(e.currentTarget.value) }}>
+                            <select defaultValue={'none'} className='Dropdown-control' value={state} onChange={(e) => { setState(e.currentTarget.value) }}>
                                 <option value="none" disabled hidden>
                                     Select a state
                                 </option>
@@ -365,7 +406,6 @@ const Contact =  () => {
                                         )
                                     })}
                             </select>
-
                         </div>
                     </div>
                     <div className={`${styles.name}`}>
@@ -388,6 +428,7 @@ const Contact =  () => {
                                 id="frm-zip"
                                 type="number"
                                 name="zipCode"
+                                value={zipCode}
                                 onChange={(e) => {
                                     setZipCode(e.currentTarget.value.trim())
                                     setZipCodeError('')
@@ -395,11 +436,11 @@ const Contact =  () => {
                                 onBlur={(e) => {
                                     setZipCodeError(checkValidateZip(e.currentTarget.value.trim()));
                                 }}
-                                
+
                             />
                         </div>
                         <div className={`${styles.block}`}>
-                            <label htmlFor="frm-phone">Phone(numbers only please)</label>
+                            <label htmlFor="frm-phone">Phone</label>
                             <span
                                 className={`${styles.errors}`}
                                 style={{ lineHeight: '1' }}
@@ -417,6 +458,7 @@ const Contact =  () => {
                                 id="frm-phone"
                                 type="text"
                                 name="phone"
+                                value={phone}
                                 onChange={(e) => {
                                     setPhone(e.currentTarget.value.trim())
                                     setPhoneError('')
@@ -424,7 +466,7 @@ const Contact =  () => {
                                 onBlur={(e) => {
                                     setPhoneError(checkValidatePhone(e.currentTarget.value.trim()));
                                 }}
-                                
+
                             />
                         </div>
                     </div>
@@ -434,8 +476,9 @@ const Contact =  () => {
                             <textarea
                                 id="frm-extra-info"
                                 name="extra"
+                                value={extraInfo}
                                 onChange={(e) => {
-                                    setExtraInfo(e.currentTarget.value.trim());
+                                    setExtraInfo(e.currentTarget.value);
                                 }}
 
                             />
@@ -443,10 +486,26 @@ const Contact =  () => {
                     </div>
 
                     <div className={`${styles.block} button`}>
-                        <button type="submit">Submit</button>
+                        <button type="submit" disabled={showLoader}>
+                            {showLoader ? processing : 'Submit'}
+                            
+                        </button>
                     </div>
                 </div>
             </form>
+            {congratulationPopup && (
+                <PopUpWrapper handler={() => setCongratulationPopup(false)}>
+                    <div className='text-center mx-auto pt-9x pb-2x' style={{ maxWidth: '26rem' }}>
+                        <h3 className='title h3 weight-800 color-darkgray mb-1_5rem'>
+                            Success!
+                        </h3>
+                        <p className='mb-2rem'>
+                            Thank you for providing your contact info. We are thrilled to have you be a part of our wedding,
+                            and will be sending out save the dates shortly!
+                        </p>
+                    </div>
+                </PopUpWrapper>
+            )}
         </>
     );
 

@@ -1,9 +1,24 @@
 import Layout from "../components/layout"
 import About from "../components/About/About"
-export default function about(){
+import { getImages } from "../sanity/sanity.query"
+
+const about = ({data}) => {
+    const {posts} = data
     return(
         <Layout>
-            <About />
+            <About images={posts}/>
         </Layout>
     )
 }
+export default about
+export async function getServerSideProps() {
+  
+    const posts = await getImages()
+    
+    return {
+      
+      props: {
+        data: { posts },
+      },
+    }
+  }

@@ -1,6 +1,8 @@
 import styles from './styles.module.scss'
 import Images from './Images'
-const About = () => {
+import { useRouter } from 'next/router'
+const About = ({images}) => {
+    const router = useRouter
     return (
         <>
 
@@ -86,7 +88,12 @@ const About = () => {
                 <div className={`${styles.column}`}>
                 <h1 className={`${styles.aboutTitle}`}>...and that was only the beginning</h1>
                     <div className={`${styles.imageSection}`}>
-                        <Images />
+                        {router.isFallback ? (
+                            <h1>Loading....</h1>
+                        ) : (
+                            <Images images={images}/>
+                        )}
+                        
                     </div>
                 </div>
             </div>
