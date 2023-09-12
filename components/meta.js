@@ -30,10 +30,8 @@ export default function Meta() {
       <meta property="og:image" content={HOME_OG_IMAGE_URL} key="ogImage" />
       <title>Jake and Reagan's Wedding Website</title>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      {/* <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
-
-      <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&family=Roboto:ital,wght@1,100;1,300&display=swap" rel="stylesheet" />
     </Head>
   )
 }

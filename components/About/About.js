@@ -1,8 +1,9 @@
 import styles from './styles.module.scss'
 import Images from './Images'
 import { useRouter } from 'next/router'
-const About = ({images}) => {
-    const router = useRouter
+import { Suspense, useState } from 'react'
+const About = ({ images }) => {
+    const [hover, setHover] = useState(false)
     return (
         <>
 
@@ -86,14 +87,11 @@ const About = ({images}) => {
                     </div>
                 </div>
                 <div className={`${styles.column}`}>
-                <h1 className={`${styles.aboutTitle}`}>...and that was only the beginning</h1>
+                    <h1 className={`${styles.aboutTitle}`}>...and that was only the beginning</h1>
                     <div className={`${styles.imageSection}`}>
-                        {router.isFallback ? (
-                            <h1>Loading....</h1>
-                        ) : (
-                            <Images images={images}/>
-                        )}
-                        
+                        <Suspense fallback={<p>Loading cute images...</p>}>
+                            <Images images={images} />
+                        </Suspense>
                     </div>
                 </div>
             </div>
