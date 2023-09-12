@@ -5,7 +5,7 @@ import Layout from "../components/layout"
 
 export default function IndexPage() {
 
-  const is_mobile = isMobile()
+  
   return (
     <Layout>
       <Suspense fallback={<p>Loading Video...</p>}>

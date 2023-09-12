@@ -14,9 +14,7 @@ const Homepage = () => {
   }, []);
   return (
     <section className={styles.contentFlex}>
-      {router.isFallback ? (
-        <h1>Loading...</h1>
-      ) : (
+      
         <video muted id="myVideo" className={styles.homeVideo} loop ref={videoRef}>
         <source
           src={
@@ -25,7 +23,7 @@ const Homepage = () => {
              type="video/mp4"
            />
       </video>  
-      )}
+      
       
     </section>
   );

@@ -21,6 +21,7 @@ const Navbar = () => {
           width={150}
           height={125}
           alt="Logo"
+          priority
         />
       </div>
       <div className={styles.section}>
