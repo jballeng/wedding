@@ -1,9 +1,10 @@
 
 import Meta from '../components/meta'
 import Navbar from './Navbar/Navbar'
-
-
+import { useSelector } from 'react-redux'
+import { Loader } from './loader'
 export default function Layout({ children }) {
+  const { globalLoader } = useSelector(state => state.uiReducer)
   return (
     <>
       <Meta />
@@ -12,7 +13,7 @@ export default function Layout({ children }) {
         {/* <Alert preview={preview} /> */}
         <main>{children}</main>
       </div>
-      
+      {globalLoader && <Loader/>}
     </>
   )
 }

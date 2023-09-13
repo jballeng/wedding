@@ -10,14 +10,14 @@ const Homepage = () => {
   const router = useRouter()
   const mobile = isMobile()
 
-  useEffect(() => {
-    setTimeout(() => {
-      videoRef?.current.play()
-    }, 100)
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     videoRef?.current.play()
+  //   }, 100)
+  // }, []);
   return (
     <section className={styles.contentFlex}>
-      {!mobile ? (
+      {/* {!mobile ? (
         <video muted id="myVideo" className={styles.homeVideo} loop ref={videoRef}>
           <source
             src={
@@ -27,7 +27,7 @@ const Homepage = () => {
           />
           Your browser does not support the video tag
         </video>
-      ) : (
+      ) : ( */}
         <Image
           src={'/Video/r-j-website.gif'}
           alt='gif'
@@ -35,7 +35,7 @@ const Homepage = () => {
           width={600}
           priority
         />
-      )}
+      {/* )} */}
 
 
 
