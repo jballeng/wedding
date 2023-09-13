@@ -1,5 +1,6 @@
 
 import styles from './styles.module.scss'
+import Image from 'next/image';
 import React, { useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 
@@ -14,17 +15,23 @@ const Homepage = () => {
   }, []);
   return (
     <section className={styles.contentFlex}>
-      
-        <video muted id="myVideo" className={styles.homeVideo} loop ref={videoRef}>
+      <Image
+        src={'/Video/r-j-website.gif'}
+        alt='gif'
+        height={388}
+        width={600}
+        priority
+      />
+
+      <video muted id="myVideo" className={styles.homeVideo} loop ref={videoRef}>
         <source
           src={
-           '/r-j-website.mp4'
-             }
-             type="video/mp4"
-           />
-      </video>  
-      
-      
+            '/r-j-website.mp4'
+          }
+          type="video/mp4"
+        />
+        Your browser does not support the video tag
+      </video>
     </section>
   );
 };

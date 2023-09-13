@@ -19,7 +19,7 @@ const Navbar = () => {
           // className={styles.logo}
           src="/favicon/icon.webp"
           width={150}
-          height={125}
+          height={156}
           alt="Logo"
           priority
         />
