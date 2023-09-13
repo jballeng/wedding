@@ -11,7 +11,7 @@ export const Loader = () => {
                 <h2>Loading....</h2>
                 </>
             ) : (
-                <h2>Loading but different.....</h2>
+                <h2>Loading cute video...</h2>
             )}
         </div>
     )
