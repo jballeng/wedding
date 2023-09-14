@@ -26,6 +26,11 @@ export default {
             type: 'string',
 
         },
+        {
+          name: 'plusOne',
+          title: 'Plus One',
+          type: 'boolean'
+        },
         
     ],
     

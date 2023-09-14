@@ -8,6 +8,7 @@ export async function getGuestList(firstName, lastName) {
       firstName,
       lastName,
       register,
+      plusOne,
     }
      
     `

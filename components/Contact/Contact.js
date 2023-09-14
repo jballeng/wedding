@@ -4,8 +4,7 @@ import { createSanityUser, setListRegister } from '../../utils/helpers';
 import styles from 'components/Contact/styles.module.scss'
 import { getGuestList } from '../../sanity/sanity.query';
 import { PopUpWrapper } from '../PopUpWrapper';
-import { spinner as Loader } from '../../utils/svgImages';
-import Button from '../../utils/constants';
+
 import {
     checkValidateFirstName,
     checkValidateMiddleName,
@@ -21,6 +20,7 @@ import usStates from './states.json'
 
 
 const Contact = () => {
+    const [plusOne, setPlusOne] = useState(false)
     const [showLoader, setShowLoader] = useState(false)
     const [processing, setProcessing] = useState('')
     const [congratulationPopup, setCongratulationPopup] = useState(false)
@@ -44,6 +44,8 @@ const Contact = () => {
     const [zipCode, setZipCode] = useState('')
     const [zipCodeError, setZipCodeError] = useState('')
     const [extraInfo, setExtraInfo] = useState('')
+    const [guestFirst, setGuestFirst] = useState('')
+    const [guestLast, setGuestLast] = useState('')
 
 
 
@@ -72,16 +74,19 @@ const Contact = () => {
         }
     }
 
-    
+
     const submitHandler = async e => {
         e.preventDefault()
         let check = []
         if (checkValidateFirstName(firstName).length > 0) {
             setFirstNameError(checkValidateFirstName(firstName))
+
+
             check.push(checkValidateFirstName(firstName)[0]?.message)
         }
         if (checkValidateLastName(lastName).length > 0) {
             setLastNameError(checkValidateLastName(lastName))
+
             check.push(checkValidateLastName(lastName)[0].message)
         }
         if (checkValidateMiddleName(middleName).length > 0) {
@@ -114,15 +119,17 @@ const Contact = () => {
             // alert('Make sure you filled out everything correctly')
         } else {
             setProcessing('Processing...')
+            setGuestFirst(firstName[0]?.toUpperCase() + firstName.substring(1))
+            setGuestLast(lastName[0]?.toUpperCase() + lastName.substring(1))
             setShowLoader(true)
             checkList(firstName, lastName).then((response) => {
                 // If submitted user is in guest list
                 if (response.length > 0) {
+                    if (response[0].plusOne) {
+                        setPlusOne(true)
+                    }
                     // If submitted user has already registered before
-                    
                     if (response[0].register == true) {
-                        
-
                         // Create user in the duplicate area
                         createSanityUser(requestBody, 'duplicate')
                     } else {
@@ -137,13 +144,11 @@ const Contact = () => {
                     createSanityUser(requestBody, 'offlist')
                 }
             }).then(
-                // need some sort of thank you alert
-                setTimeout(() =>{
+                // waits for a second, then a thank you popup appears and all inputs reset
+                setTimeout(() => {
                     setCongratulationPopup(true)
                     setProcessing('')
                     setShowLoader(false)
-                    setFirstName('')
-                    setLastName('')
                     setMiddleName('')
                     setEmail('')
                     setPhone('')
@@ -155,9 +160,10 @@ const Contact = () => {
                     setExtraInfo('')
                     setSuffix('')
                 }, 1000)
-
+                
             )
-
+            setFirstName('')
+            setLastName('')
 
         }
 
@@ -170,14 +176,15 @@ const Contact = () => {
 
         <>
             <div className={`${styles.intro}`}>
-                {/* <h1>Contact Information</h1> */}
                 <span>
-                    Please fill out this form for each member of your party so that we can ensure all
-                    guests are detailed appropriately in both save the dates & invites! If you have any questions, please reach out to jakeandreagansayido@gmail.com.
+                Please fill out this form so that we can ensure all guests are detailed appropriately. 
+                Filling this out doesn't mean you're accepting our invite! We totally understand that 
+                dates, locations, etc., may change your availability. We will be sending out Save the 
+                Dates as soon as possible with more information!
+
                 </span>
                 <span>
-                    Filling this out doesn't mean you're accepting our invite! We totally understand that dates, locations, etc, may change your availability so will give you
-                    the opportunity to say "yes" or "no" later on.
+                If you have any questions, please reach out to <a href="mailto:jakeandreagansayido@gmail.com">jakeandreagansayido@gmail.com</a>.
                 </span>
             </div>
             <form onSubmit={submitHandler} className={`${styles.container}`}>
@@ -284,9 +291,9 @@ const Contact = () => {
                                 value={suffix}
                                 onChange={(e) => {
                                     setSuffix(e.currentTarget.value.trim());
-                                    
+
                                 }}
-                                
+
                             />
                         </div>
                     </div>
@@ -472,7 +479,7 @@ const Contact = () => {
                     </div>
                     <div className={`${styles.name}`}>
                         <div className={`${styles.block}`} id={`${styles.extraInfo}`}>
-                            <label htmlFor="frm-extra-info">Please Provide Dietary Restrictions for All Memebers of Your Party:</label>
+                            <label htmlFor="frm-extra-info">Please Provide Any Dietary Restrictions</label>
                             <textarea
                                 id="frm-extra-info"
                                 name="extra"
@@ -488,7 +495,7 @@ const Contact = () => {
                     <div className={`${styles.block} button`}>
                         <button type="submit" disabled={showLoader}>
                             {showLoader ? processing : 'Submit'}
-                            
+
                         </button>
                     </div>
                 </div>
@@ -500,9 +507,22 @@ const Contact = () => {
                             Success!
                         </h3>
                         <p className='mb-2rem'>
-                            Thank you for providing your contact info. We are thrilled to have you be a part of our wedding,
-                            and will be sending out save the dates shortly!
+                            Thank you {guestFirst} for providing your contact info!
+                            {plusOne && (
+                                <p className={styles.textPadding}> 
+                                   You also have a designated plus one! Please make sure to 
+                                   fill out the form again with their information to make sure 
+                                   we can address our invites properly.
+                                </p>
+                            )}
                         </p>
+
+                        <p className={styles.textPadding}>
+                            We would be thrilled to have you be a part of our big day! We will be sending 
+                            out Save the Dates shortly with more information.
+
+                        </p>
+
                     </div>
                 </PopUpWrapper>
             )}

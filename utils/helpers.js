@@ -1,7 +1,6 @@
 import { groq } from "next-sanity"
 import { createClient } from "next-sanity"
 import { config } from "./sanity-config"
-import guestlist from "components/Contact/guestlist(1).json"
 import { useState, useEffect } from "react"
 
 const setRegister = (_id) => {
