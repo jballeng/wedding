@@ -3,12 +3,9 @@
   flex-direction: column;
   width: 35%;
 }
-
 #extraInfo {
   width: 100%;
 }
-
-
 .block {
   display: flex;
   flex-direction: column;
@@ -18,7 +15,6 @@
       margin: 10px 0 10px 0;
       width: 100%;
     }
-
     .Dropdown-control {
       display: flex;
       position: relative;
@@ -34,7 +30,6 @@
       margin: 10px 0px 10px 0;
       -webkit-padding-start: 15px;
     }
-
     .Dropdown-menu {
       background-color: white;
       border: 1px solid #ccc;
@@ -47,11 +42,9 @@
       max-height: 33vh;
       overflow: scroll;
     }
-
     .Dropdown-placeholder {
       width: 100%;
     }
-
     .states {
       box-sizing: border-box;
       display: flex;
@@ -59,28 +52,22 @@
       cursor: pointer;
       width: 100%;
       align-items: center;
-
       .is-selected {
         background-color: #f2f9fc;
         color: #333;
       }
-
       :last-child {
         border-bottom-right-radius: 2px;
         border-bottom-left-radius: 2px;
       }
-
     }
-
     .Dropdown-option:hover {
       background-color: #999;
     }
-
     .is-open .Dropdown-arrow {
       border-color: transparent transparent #999;
       border-width: 0 5px 5px;
     }
-
     .Dropdown-arrow {
       border-color: #999 transparent transparent;
       border-width: 5px 5px 0;
@@ -94,9 +81,6 @@
       width: 0;
     }
   }
-
-  
-
   button {
     padding: 5px;
     font-size: 20px;
@@ -107,35 +91,26 @@
     margin-top: 25px;
     background-color: #1c3a4b;
     color: rgb(248 239 227 / var(--tw-bg-opacity));
-
     @media (max-width: 480px) {
       max-width: 40%;
     }
   }
-
   button:hover {
     background-color: rgb(248 239 227 / var(--tw-bg-opacity));
     color: #1c3a4b;
   }
-
   button:disabled {
     background-color: rgb(248 239 227 / var(--tw-bg-opacity));
     color: #1c3a4b;
   }
-
 }
-
 .errors {
   color: red;
   font-size: 0.75rem;
 }
-
 .container {
   padding: 0;
-
   padding: 25px 0 100px 0;
-  // font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
-  //   Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-weight: 400;
   min-height: 100vh;
   display: flex;
@@ -145,55 +120,44 @@
   font-size: 1rem;
   border-radius: 10px;
   width: 100%;
-
   flex-direction: column;
-
   input {
     line-height: .5px;
     margin: 10px 0 10px 0px;
-    border-color: rgb(31, 28, 28);
+    border-color: #1c3a4b;
     padding: 10px;
     border-radius: 5px;
-
+    border: .5px solid;
   }
-
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
   }
-
   textarea {
     margin: 10px 0 10px 0px;
     padding: 5px;
-    border-color: rgb(31, 28, 28);
+    border-color: #1c3a4b;
     border-radius: 5px;
-
-    font-size: 20px;
+    font-size: 15px;
     width: 100%;
+    border: 0.5px solid;
   }
-
   h1 {
     text-align: center;
     font-weight: 600;
   }
-
 }
-
-
-
 .name {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
   div {
     display: flex;
     flex-direction: column;
     width: 45%;
   }
 }
-
 .intro {
   display: flex;
   flex-direction: column;
@@ -210,15 +174,12 @@
   h1 {
     font-size: 2rem;
     font-weight: 500;
-
   }
-
   span {
     width: 60%;
     padding: 15px 25px 0 25px;
     font-size: 1rem;
   }
-
 }
 .textPadding{
   padding: 10px 0;
@@ -227,7 +188,6 @@
   .intro span {
     width: 100%;
   }
-
   .formInputs {
     width: 100%;
     padding: 15px 25px 0 25px;

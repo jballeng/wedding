@@ -1,10 +1,16 @@
 .postContainer{
     display: flex;
     padding: 0 10rem 0 10rem;
+    flex-direction: column;
+    color: #1c3a4b;
 }
 .question{
-    font-weight: 700;
+    font-weight: 900;
+    font-size: 1.1rem;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+   
 }
 .answer{
-    background-color: blue;
+    padding: 1rem;
 }
