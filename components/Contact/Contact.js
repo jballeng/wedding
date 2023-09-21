@@ -178,7 +178,7 @@ const Contact = () => {
             <div className={`${styles.intro}`}>
                 <span>
                 Please fill out this form so that we can ensure all guests are detailed appropriately. 
-                Filling this out doesn't mean you're accepting our invite! We totally understand that 
+                Filling this out doesn't mean you're accepting our invite; we totally understand that 
                 dates, locations, etc., may change your availability. We will be sending out Save the 
                 Dates as soon as possible with more information!
 
@@ -479,7 +479,7 @@ const Contact = () => {
                     </div>
                     <div className={`${styles.name}`}>
                         <div className={`${styles.block}`} id={`${styles.extraInfo}`}>
-                            <label htmlFor="frm-extra-info">Please Provide Any Dietary Restrictions</label>
+                            <label htmlFor="frm-extra-info">Please provide any dietary restrictions or comments:</label>
                             <textarea
                                 id="frm-extra-info"
                                 name="extra"
