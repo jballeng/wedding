@@ -2,15 +2,12 @@
     display: flex;
     padding: 0 10rem 0 10rem;
     flex-direction: column;
-    color: #1c3a4b;
 }
 .question{
     font-weight: 900;
-    font-size: 1.1rem;
-    text-decoration: underline;
-    text-underline-offset: 5px;
-   
+    font-size: 1.15rem;
 }
 .answer{
-    padding: 1rem;
+    padding: .75rem;
+    color: #1c3a4b;
 }

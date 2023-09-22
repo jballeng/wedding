@@ -1,17 +1,19 @@
 .contentFlex{
     display: flex;
-    /* display: none; */
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
     margin-bottom: 10px;
+    h2{
+        padding: 1rem;
+    }
     img{
         width: 75%;
         height: auto;
         border-radius: 20px;
         @media (max-width: 480px){
             width: 95%;
-            margin-top: 15vh;
+            margin-top: 5vh;
         }
     }
 }
