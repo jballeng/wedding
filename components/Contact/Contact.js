@@ -135,7 +135,7 @@ const Contact = () => {
                     } else {
                         // Create guest in the wedding guest table
                         createSanityUser(requestBody, 'guest').then(
-                            // Mark the use as registered in the guestlist table
+                            // Mark the user as registered in the guestlist table
                             setListRegister(response[0]._id)
                         )
                     }
