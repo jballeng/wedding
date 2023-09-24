@@ -3,15 +3,14 @@ export default {
     title: 'Non Guest List Info',
     type: 'document',
     fields: [
-      
-      {
-        name: 'firstName',
-        title: 'First Name',
-        type: 'string',
-      },
       {
         name: 'fullName',
         title: 'Full Name',
+        type: 'string',
+      },
+      {
+        name: 'firstName',
+        title: 'First Name',
         type: 'string',
       },
       {

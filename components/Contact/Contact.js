@@ -507,7 +507,7 @@ const Contact = () => {
                             Success!
                         </h3>
                         <p className='mb-2rem'>
-                            Thank you {guestFirst} for providing your contact info!
+                            Thank you, {guestFirst}, for providing your contact info!
                             {plusOne && (
                                 <p className={styles.textPadding}> 
                                    You also have a designated plus one! Please make sure to 
