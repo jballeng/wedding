@@ -125,7 +125,7 @@ const Contact = () => {
             checkList(firstName, lastName).then((response) => {
                 // If submitted user is in guest list
                 if (response.length > 0) {
-                    if (response[0].plusOne) {
+                    if (response[0].plusOne == true) {
                         setPlusOne(true)
                     }
                     // If submitted user has already registered before
@@ -141,7 +141,7 @@ const Contact = () => {
                     }
                 } else {
                     // Submitted user not in guest list so added to the offlist table
-                    createSanityUser(requestBody, 'offlist')
+                    createSanityUser(requestBody, 'offList')
                 }
             }).then(
                 // waits for a second, then a thank you popup appears and all inputs reset

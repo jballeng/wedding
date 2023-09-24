@@ -30,9 +30,7 @@ export const createSanityUser = async (user, type) => {
 const createNewSanityUser = (user, type) => {
   let fullName = user.firstName + ' ' + user.middleName + ' ' + user.lastName
   let id = user.firstName + user.middleName + user.lastName + type
-  
   return {
-
     _type: type,
     _id: id,
     fullName: fullName,
@@ -45,7 +43,6 @@ const createNewSanityUser = (user, type) => {
     address2: user.address2,
     city: user.city,
     state: user.state,
-
     address: {
       address1: user.address.address1,
       address2: user.address.address2,
@@ -56,7 +53,6 @@ const createNewSanityUser = (user, type) => {
     },
     phone: user.phone,
     extraInfo: user.extra
-
   }
 
 }
@@ -182,7 +178,7 @@ function useWindowSize() {
     function handleResize() {
       setWindowDimensions({
         width: window.innerWidth,
-        height: window.inndeHeight,
+        height: window.innerHeight,
       })
     }
 
