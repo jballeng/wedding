@@ -347,7 +347,7 @@ const Contact = () => {
                             name="address1"
                             value={address1}
                             onChange={(e) => {
-                                setAddress1(e.currentTarget.value.trim())
+                                setAddress1(e.currentTarget.value)
                                 setAddressOneError('')
                             }}
                             onBlur={(e) => {
@@ -363,7 +363,7 @@ const Contact = () => {
                             name="address2"
                             value={address2}
                             onChange={(e) => {
-                                setAddress2(e.currentTarget.value.trim());
+                                setAddress2(e.currentTarget.value);
                             }}
 
                         />
@@ -390,7 +390,7 @@ const Contact = () => {
                                 name="city"
                                 value={city}
                                 onChange={(e) => {
-                                    setCity(e.currentTarget.value.trim())
+                                    setCity(e.currentTarget.value)
                                     setCityError('')
                                 }}
                                 onBlur={(e) => {
