@@ -43,6 +43,9 @@ const Navbar = () => {
           <Link href="/contact" className={path == '/contact' ? 'active' : ''} id="contactInfo">
             Contact Info
           </Link>
+          <Link href="/registry" className={path == '/registry' ? 'active' : ''} id="registry">
+            Registry
+          </Link>
           <Link href="/faq" className={path == '/faq' ? 'active' : ''} id="faq">
             FAQ
           </Link>

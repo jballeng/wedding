@@ -1,9 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
-import { createSanityUser, setListRegister } from '../../../utils/helpers';
+import { createSanityUser, setListRegister } from '../../utils/helpers';
 import styles from './styles.module.scss'
-import { getGuestList } from '../../../sanity/sanity.query';
-import { PopUpWrapper } from '../../../components/PopUpWrapper';
+import { getGuestList } from '../../sanity/sanity.query';
+import { PopUpWrapper } from '../../components/PopUpWrapper';
 
 import {
     checkValidateFirstName,

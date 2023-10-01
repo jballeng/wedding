@@ -1,5 +1,5 @@
 import Layout from "../components/layout"
-import Faq from "./sections/Faq/Faq"
+import Faq from "../sections/Faq/Faq"
 import { getFaqList } from "../sanity/sanity.query"
 import styles from "./styles.module.scss"
 const faq = ({data}) => {

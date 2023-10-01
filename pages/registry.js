@@ -1,9 +1,9 @@
 import Layout from "../components/layout"
-import Contact from "../sections/Contact/Contact"
+import Registry from "../sections/Registry/Registry"
 export default function contact(){
     return(
         <Layout>
-            <Contact/>
+            <Registry/>
         </Layout>
         
     )
