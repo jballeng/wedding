@@ -1,7 +1,6 @@
 import { isValidSignature, SIGNATURE_HEADER_NAME } from '@sanity/webhook'
 import { sanityClient } from '../../lib/sanity.server'
 
-// Next.js will by default parse the body, which can lead to invalid signatures
 export const config = {
   api: {
     bodyParser: false,

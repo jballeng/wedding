@@ -12,9 +12,7 @@
     
     backdrop-filter: blur(10px);
   }
-  @supports not (backdrop-filter: blur(40px)) {
-    // background-color: rgba(75, 74, 91, 0.9);
-  }
+  
   :global {
     .popupWindow {
       max-width: 35rem;
@@ -28,8 +26,7 @@
       border: 1px solid;
       border-radius: 10px;
       color: rgb(248 239 227 / var(--tw-bg-opacity));
-      // background-size: 90%;
-      //overflow: auto;
+      
       @media (min-width: 1200px) {
         padding: 2rem;
       }
@@ -38,7 +35,7 @@
         top: 1.5rem;
         right: 1.5rem;
         z-index: 1;
-        //opacity: 0.7;
+       
         &:hover {
           opacity: 1;
           cursor: pointer;

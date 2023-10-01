@@ -1,7 +1,3 @@
-// import parsePhoneNumber from 'libphonenumber-js'
-// import { log } from '~/utils/helpers'
-// import { paymentValue } from '~/utils/constants'
-import { queryUsers, getClient } from "./helpers"
 
 const validateName = (name) => /^[а-яА-Яa-zA-Z._\s-]{2,30}$/.test(name)
 const validateEmail = (email) =>

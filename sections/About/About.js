@@ -86,7 +86,7 @@ const About = ({ images }) => {
                         </span>
                     </div>
                 </div>
-                <div className={`${styles.column}`}>
+                <div className={`${styles.column} ${styles.imageColumn}`}>
                     <h1 className={`${styles.aboutTitle}`}>...and that was only the beginning</h1>
                     <div className={`${styles.imageSection}`}>
                         <Suspense fallback={<p>Loading cute images...</p>}>

@@ -1,4 +1,4 @@
-// components/Navbar.tsx
+
 import { useRouter } from "next/router";
 import styles from "./styles.module.scss";
 import Image from "next/image";
@@ -16,7 +16,6 @@ const Navbar = () => {
 
       <div className={styles.section}>
         <Image
-          // className={styles.logo}
           src="/favicon/icon.webp"
           width={150}
           height={156}

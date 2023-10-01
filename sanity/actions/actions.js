@@ -1,4 +1,3 @@
-// actions.js
 import client from '../../sanity/sanity.client'
 import { createClient } from "next-sanity"
 import {config} from '../../utils/sanity-config'
@@ -18,8 +17,7 @@ export default function MoveToGuest(props){
  
   useEffect(() => {
     
-    // if the isPublishing state was set to true and the draft has changed
-    // to become `null` the document has been published
+
     if (isPublishing && !props.draft) {
       setIsPublishing(false)
     }
