@@ -9,6 +9,7 @@ import {orderableDocumentListDeskItem} from '@sanity/orderable-document-list'
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import {apiVersion, dataset, projectId} from './sanity/env'
 import {schema} from './sanity/schema'
+import MoveToGuest from './sanity/actions/actions'
 
 export default defineConfig({
   name: 'wedding-backend',
@@ -50,4 +51,9 @@ export default defineConfig({
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({defaultApiVersion: apiVersion}),
   ],
+  document: {
+    actions: (prev, context) => {
+      return context.schemaType === 'offList' ? [MoveToGuest, ...prev] : prev;
+    }
+  },
 })
