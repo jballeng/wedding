@@ -1,5 +1,7 @@
 .body{
     font-family: 'EB Garamond', serif;
+    min-height: 100vh;
+   
 }
 .header{
     display: flex;
@@ -10,4 +12,7 @@
     @media (max-width: 480px){
         text-align: center;
     }
+}
+.faqWrapper{
+    padding-bottom: 3rem;
 }

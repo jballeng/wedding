@@ -9,7 +9,7 @@ export default function Layout({ children }) {
     <>
       <Meta />
       <Navbar />
-      <div className="min-h-screen">
+      <div>
         {/* <Alert preview={preview} /> */}
         <main>{children}</main>
       </div>

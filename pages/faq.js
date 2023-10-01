@@ -6,8 +6,10 @@ const faq = ({data}) => {
     const { posts } = data
     return(
         <Layout>
-          <h2 className={`${styles.header}`}>More of your questions will be answered soon! For now, please see the following Q&A.</h2>
+          <div className={`${styles.faqWrapper}`}>
+            <h2 className={`${styles.header}`}>More of your questions will be answered soon! For now, please see the following Q&A.</h2>
             <Faq posts={posts}/>
+          </div>
         </Layout>
         
     )
