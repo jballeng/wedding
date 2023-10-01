@@ -67,8 +67,6 @@ const handleMutations = async (mutations) => {
       },
       body: JSON.stringify({
         mutations
-        // returnIds: true,
-        // returnDocuments: true,
       }),
     }
   )
@@ -76,13 +74,6 @@ const handleMutations = async (mutations) => {
     .then((results) => {
       return results
     })
-    // .then((result) => {
-    //   return result
-    // })
-    // .then((result) => {
-    //   console.log(result)
-    //   return result
-    // })
     .catch((error) => {
       console.error(error)
       return error
@@ -155,10 +146,6 @@ export const guestInfo = () => {
   return(
     getClient()
       .fetch(queryGuestList)
-      // .then((response) => response.json())
-      // .then((results) => {
-      //   return results
-      // })
   )
 }
 
