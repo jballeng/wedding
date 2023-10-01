@@ -1,5 +1,5 @@
 import Layout from "../components/layout"
-import Contact from "../components/Contact/Contact"
+import Contact from "./sections/Contact/Contact"
 export default function contact(){
     return(
         <Layout>

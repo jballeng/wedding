@@ -133,6 +133,14 @@ const checkValidatePhone = (phone) => {
     return phoneErrors
 }
 
+const checkValidateState = (data) => {
+    let stateErrors = []
+    console.log(data)
+    if(data == '' || data == null){
+        stateErrors = [{type: 'missing', message: "Don't forget your state!"}]
+    }
+    return stateErrors
+}
 export {
     validateName,
     validateEmail,
@@ -146,4 +154,5 @@ export {
     checkValidatePhone,
     checkValidateAddress,
     checkValidateCity,
+    checkValidateState,
 }

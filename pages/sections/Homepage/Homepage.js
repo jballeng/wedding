@@ -3,7 +3,8 @@ import styles from './styles.module.scss'
 import Image from 'next/image';
 import React, { useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
-import { isMobile } from '../../utils/helpers'
+import { isMobile } from '../../../utils/helpers'
+
 
 const Homepage = () => {
   const videoRef = useRef();

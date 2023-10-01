@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import Homepage from '../components/Homepage/Homepage'
+import Homepage from './sections/Homepage/Homepage'
 import Layout from "../components/layout"
 import { Loader } from '../components/loader'
 

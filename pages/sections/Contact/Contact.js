@@ -1,9 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
-import { createSanityUser, setListRegister } from '../../utils/helpers';
-import styles from 'components/Contact/styles.module.scss'
-import { getGuestList } from '../../sanity/sanity.query';
-import { PopUpWrapper } from '../PopUpWrapper';
+import { createSanityUser, setListRegister } from '../../../utils/helpers';
+import styles from './styles.module.scss'
+import { getGuestList } from '../../../sanity/sanity.query';
+import { PopUpWrapper } from '../../../components/PopUpWrapper';
 
 import {
     checkValidateFirstName,
@@ -14,6 +14,7 @@ import {
     checkValidateZip,
     checkValidateAddress,
     checkValidateCity,
+    checkValidateState,
 } from '/utils/validator'
 import usStates from './states.json'
 
@@ -40,7 +41,8 @@ const Contact = () => {
     const [address2, setAddress2] = useState('')
     const [city, setCity] = useState('')
     const [cityError, setCityError] = useState('')
-    const [state, setState] = useState('none')
+    const [state, setState] = useState('')
+    const [stateError, setStateError] = useState('')
     const [zipCode, setZipCode] = useState('')
     const [zipCodeError, setZipCodeError] = useState('')
     const [extraInfo, setExtraInfo] = useState('')
@@ -80,13 +82,10 @@ const Contact = () => {
         let check = []
         if (checkValidateFirstName(firstName).length > 0) {
             setFirstNameError(checkValidateFirstName(firstName))
-
-
             check.push(checkValidateFirstName(firstName)[0]?.message)
         }
         if (checkValidateLastName(lastName).length > 0) {
             setLastNameError(checkValidateLastName(lastName))
-
             check.push(checkValidateLastName(lastName)[0].message)
         }
         if (checkValidateMiddleName(middleName).length > 0) {
@@ -112,6 +111,10 @@ const Contact = () => {
         if (checkValidateZip(zipCode).length > 0) {
             setZipCodeError(checkValidateZip(zipCode))
             check.push(checkValidateZip(zipCode)[0].message)
+        }
+        if(checkValidateState(state).length > 0){
+            setStateError(checkValidateState(state))
+            check.push(checkValidateState(state)[0].message)
         }
 
         // if checks return an error
@@ -155,7 +158,7 @@ const Contact = () => {
                     setAddress1('')
                     setAddress2('')
                     setCity('')
-                    setState('none')
+                    setState('')
                     setZipCode('')
                     setExtraInfo('')
                     setSuffix('')
@@ -211,7 +214,7 @@ const Contact = () => {
                                 name="firstName"
                                 value={firstName}
                                 onChange={(e) => {
-                                    setFirstName(e.currentTarget.value.trim())
+                                    setFirstName(e.currentTarget.value)
                                 }}
                                 onBlur={(e) => {
                                     setFirstNameError(checkValidateFirstName(e.currentTarget.value))
@@ -241,7 +244,7 @@ const Contact = () => {
                                 name="middleName"
                                 value={middleName}
                                 onChange={(e) => {
-                                    setMiddleName(e.currentTarget.value.trim());
+                                    setMiddleName(e.currentTarget.value);
                                     setMiddleNameError('')
                                 }}
                                 onBlur={(e) => {
@@ -273,7 +276,7 @@ const Contact = () => {
                                 name="lastName"
                                 value={lastName}
                                 onChange={(e) => {
-                                    setLastName(e.currentTarget.value.trim());
+                                    setLastName(e.currentTarget.value);
                                     setLastNameError('')
                                 }}
                                 onBlur={(e) => {
@@ -290,7 +293,7 @@ const Contact = () => {
                                 name="suffix"
                                 value={suffix}
                                 onChange={(e) => {
-                                    setSuffix(e.currentTarget.value.trim());
+                                    setSuffix(e.currentTarget.value);
 
                                 }}
 
@@ -394,13 +397,36 @@ const Contact = () => {
                                     setCityError('')
                                 }}
                                 onBlur={(e) => {
-                                    setCityError(checkValidateCity(e.currentTarget.value.trim()));
+                                    setCityError(checkValidateCity(e.currentTarget.value));
                                 }}
                             />
                         </div>
                         <div className={`${styles.block}`}>
                             <label htmlFor="frm-state">State</label>
-                            <select defaultValue={'none'} className='Dropdown-control' value={state} onChange={(e) => { setState(e.currentTarget.value) }}>
+                            <span
+                                className={`${styles.errors}`}
+                                style={{ lineHeight: '1' }}
+                            >
+                                {stateError.length !== 0 &&
+                                    stateError.map((error) => {
+                                        return (
+                                            <span key={error.type} className="block">
+                                                {error.message}
+                                            </span>
+                                        )
+                                    })}
+                            </span>
+                            <select  
+                                className='Dropdown-control' 
+                                defaultValue={'none'}  
+                                onChange={(e) => { 
+                                    setState(e.currentTarget.value) 
+                                    setStateError('')
+                                    }}
+                                onBlur={(e) => {
+                                    setStateError(checkValidateState(e.currentTarget.value))
+                                }}
+                                    >
                                 <option value="none" disabled hidden>
                                     Select a state
                                 </option>

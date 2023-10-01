@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from './styles.module.scss'
 import imageUrlBuilder from "@sanity/image-url";
-import client from '../../sanity/sanity.client'
+import client from '../../../sanity/sanity.client'
 import { useRouter } from "next/router";
 import { useState } from "react";
 // import images from './images.json'

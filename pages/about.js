@@ -1,5 +1,5 @@
 import Layout from "../components/layout"
-import About from "../components/About/About"
+import About from "./sections/About/About"
 import { getImages } from "../sanity/sanity.query"
 
 const about = ({data}) => {
