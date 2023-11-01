@@ -1,0 +1,19 @@
+.accordionTitle{
+    font-weight: 900;
+    font-size: 1.15rem;
+    padding: .5rem;
+}
+.accordionButton{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 4px;
+    border: none;
+    background: transparent;
+    outline: none;
+    cursor: pointer;
+}
+.accordionContent{
+    padding: 0 3em 0 3em;
+    width: 80%;
+}

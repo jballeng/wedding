@@ -3,6 +3,7 @@ module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
+    './sections/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
@@ -16,6 +17,7 @@ module.exports = {
       },
       spacing: {
         28: '7rem',
+        base: '2rem'
       },
       letterSpacing: {
         tighter: '-.04em',
@@ -24,10 +26,12 @@ module.exports = {
         tight: 1.2,
       },
       fontSize: {
-        '5xl': '2.5rem',
-        '6xl': '2.75rem',
-        '7xl': '4.5rem',
-        '8xl': '6.25rem',
+        '1': '1rem',
+        '1.25': '1.25rem',
+        '1.5': '1.5rem',
+        '2': '2rem',
+        '2.5': '2.5rem',
+        '3': '3rem'
       },
       boxShadow: {
         small: '0 5px 10px rgba(0, 0, 0, 0.12)',

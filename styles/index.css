@@ -1,5 +1,16 @@
 /* purgecss start ignore */
 @tailwind base;
+@layer base {
+    h1 {
+      @apply text-2;
+    }
+    h2 {
+      @apply text-1.5;
+    }
+    h3 {
+        @apply text-1.25;
+    }
+  }
 @tailwind components;
 /* purgecss end ignore */
 @tailwind utilities;

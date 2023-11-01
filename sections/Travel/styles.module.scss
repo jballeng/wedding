@@ -1,0 +1,40 @@
+.travelWrapper{
+    display: flex;
+    padding: 1rem 10rem 10rem 10rem;
+    flex-direction: row;
+    @media (max-width: 480px) {
+        padding: 0 1rem 0 1rem;
+    }
+    :global{
+        .section{
+            display: flex;
+            /* width: 50%; */
+            justify-content: space-around;
+            padding-top: 1rem;
+            
+            h3{
+                padding-left: 2rem;
+            }
+        }
+    }
+}
+.travelHeader{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+.travelSection{
+    display: flex;
+    flex-direction: column;
+}
+.checkbox{
+    display: flex;
+    align-items: center;
+}
+.checkboxSvg{
+    padding-right: 1rem;
+}
+.postSection{
+    padding: 1rem;
+}

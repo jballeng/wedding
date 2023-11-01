@@ -42,8 +42,10 @@ export default defineConfig({
               .schemaType('duplicate')
               .child(S.documentTypeList('duplicate').title('Duplicate Entries')),
             
-            orderableDocumentListDeskItem({type: 'faq', S, context}),
-            orderableDocumentListDeskItem({type: 'imageGrid', S, context})
+            orderableDocumentListDeskItem({title:'FAQ', type: 'faq', S, context}),
+            orderableDocumentListDeskItem({title:'Image Grid', type: 'imageGrid', S, context}),
+            orderableDocumentListDeskItem({title:'Travel Section', type: 'travel', S, context}),
+            orderableDocumentListDeskItem({title:'Accomodation Section', type: 'accom', S, context})
           ])
       }
     }),

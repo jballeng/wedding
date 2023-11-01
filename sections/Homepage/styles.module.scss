@@ -4,9 +4,7 @@
     flex-wrap: wrap;
     align-items: center;
     padding-bottom: 3rem;
-    h2{
-        padding: 1rem;
-    }
+   
     img{
         width: 75%;
         height: auto;
@@ -16,9 +14,6 @@
             margin-top: 5vh;
         }
     }
-}
-.title{
-    font-size: 1.5rem;
 }
 .homeVideo{
     filter: sepia(50%);

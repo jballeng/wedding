@@ -24,8 +24,16 @@ export async function getFaqList() {
   
 export async function getImages(){
   return client.fetch(
-    groq`*[_type == "imageGrid"] | order(orderRank)
-      
-    `
+    groq`*[_type == "imageGrid"] | order(orderRank)`
+  );
+}
+export async function getTravelSections(){
+  return client.fetch(
+    groq`*[_type == "travel"] | order(orderRank)`
+  );
+}
+export async function getAccomodationSections(){
+  return client.fetch(
+    groq`*[_type == "accom"] | order(orderRank)`
   );
 }

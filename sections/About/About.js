@@ -7,10 +7,10 @@ const About = ({ images }) => {
     return (
         <>
 
-            <div className={`${styles.aboutWrapper}`}>
+            <div className={`${styles.aboutWrapper}`} id='about-us-wrapper'>
 
-                <div className={`${styles.column}`}>
-                    <h1 className={`${styles.aboutTitle}`}>A Bear and a Mermaid Walk Into a Bar…</h1>
+                <div className={`${styles.column} about-column`}>
+                    <h2 className={`${styles.aboutTitle}`}>A Bear and a Mermaid Walk Into a Bar…</h2>
                     <div className={`${styles.paragraph}`}>
                         <span>
                             <div className={`${styles.indent}`}>October</div> 30th, 2021, the story begins. Both Jake and Reagan were invited to the same
@@ -86,8 +86,8 @@ const About = ({ images }) => {
                         </span>
                     </div>
                 </div>
-                <div className={`${styles.column} ${styles.imageColumn}`}>
-                    <h1 className={`${styles.aboutTitle}`}>...and that was only the beginning</h1>
+                <div className={`${styles.column} ${styles.imageColumn} about-column`}>
+                    <h2 className={`${styles.aboutTitle}`}>...and that was only the beginning</h2>
                     <div className={`${styles.imageSection}`}>
                         <Suspense fallback={<p>Loading cute images...</p>}>
                             <Images images={images} />

@@ -32,12 +32,15 @@ const Navbar = () => {
         </h2>
       </div>
       <div className={styles.section}>
-        <div className={styles.menuLinks}>
+        <div className={styles.menuLinks} id='menu-links'>
           <Link href="/" className={path == '/' ? 'active' : ''}>
             Home
           </Link>
           <Link href="/about" className={path == '/about' ? 'active' : ''} id={styles.aboutUs}>
             Our Story
+          </Link>
+          <Link href="/travel" className={path == '/travel' ? 'active' : ''} id={styles.aboutUs}>
+            Travel
           </Link>
           <Link href="/contact" className={path == '/contact' ? 'active' : ''} id="contactInfo">
             Contact Info

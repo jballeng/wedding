@@ -12,7 +12,7 @@ const Homepage = () => {
   const mobile = isMobile()
 
   return (
-    <section className={styles.contentFlex}>
+    <section className={styles.contentFlex} id='home-content'>
         <Image
           src={'/Video/r-j-website.gif'}
           alt='gif'
@@ -20,7 +20,7 @@ const Homepage = () => {
           width={600}
           priority
         />
-        <h2>
+        <h2 className='p-base'>
           EVENT DETAILS COMING SOON
         </h2>
     </section>

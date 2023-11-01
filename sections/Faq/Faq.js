@@ -1,4 +1,5 @@
 import styles from './styles.module.scss'
+import Accordion from '../../components/Accordion/Accordion'
 
 const Faq = ({ posts }) => {
 
@@ -8,7 +9,8 @@ const Faq = ({ posts }) => {
         posts.map((post) => {
             return(
             <div key={post._id} className={styles.postContainer}>
-                <div className={styles.question}>
+                <Accordion title={post.title} content={post.body} />
+                {/* <div className={styles.question}>
                     <h1 key={post.title}>
                         {post.title}
                     </h1>
@@ -17,7 +19,7 @@ const Faq = ({ posts }) => {
                     <span key={post.body}>
                         {post.body}
                     </span>
-                </div>
+                </div> */}
             </div>
 
             )
