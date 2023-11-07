@@ -1,19 +1,29 @@
 .travelWrapper{
     display: flex;
-    padding: 1rem 10rem 10rem 10rem;
+    padding: 1rem 5rem 10rem 5rem;
     flex-direction: row;
     @media (max-width: 480px) {
+        flex-direction: column;
         padding: 0 1rem 0 1rem;
     }
     :global{
         .section{
             display: flex;
-            /* width: 50%; */
+            width: 50%; 
             justify-content: space-around;
             padding-top: 1rem;
             
             h3{
-                padding-left: 2rem;
+                padding-left: 1rem;
+                font-weight: 900;
+            }
+        }
+        @media (max-width: 480px) {
+            .section{
+                width: 100%;
+                h3{
+                    font-size: 1.5rem;
+                }
             }
         }
     }

@@ -16,7 +16,7 @@ const Travel = ({posts, accom}) => {
                     height={37}
                     alt='Plane'
                 />
-                <h2>Travel</h2>
+                <h2 id='travel-header'>Travel</h2>
                 
             </div>
             <div>
