@@ -13,16 +13,34 @@ const Homepage = () => {
 
   return (
     <section className={styles.contentFlex} id='home-content'>
-        <Image
-          src={'/Video/r-j-website.gif'}
-          alt='gif'
-          height={388}
-          width={600}
-          priority
-        />
-        <h2 className='p-base'>
-          EVENT DETAILS COMING SOON
+
+      <div className='py-4 flex flex-col items-center'>
+        <h2 className=''>
+          Rehearsal Dinner
         </h2>
+        <h3>
+          April 17, 2024 | Markree Castle
+        </h3>
+      </div>
+      <div className='py-4 flex flex-col items-center'>
+        <h2 className=''>
+          Wedding Ceremony & Reception
+        </h2>
+        <h3>
+          April 18, 2024 | Markree Castle
+        </h3>
+      </div>
+
+
+      <Image
+        src={'/Video/r-j-website.gif'}
+        alt='gif'
+        height={388}
+        width={600}
+        priority
+      />
+
+
     </section>
   );
 };
