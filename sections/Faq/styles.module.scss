@@ -2,6 +2,7 @@
     display: flex;
     padding: 0 10rem 0 10rem;
     flex-direction: column;
+    color: #1c3a4b;
     @media (max-width: 480px) {
         padding: 0 1rem 0 1rem;
     }
@@ -12,5 +13,5 @@
 }
 .answer{
     padding: .75rem;
-    color: #1c3a4b;
+    
 }
