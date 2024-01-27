@@ -28,7 +28,7 @@ const Navbar = () => {
           JAKE &amp; REAGAN
         </h1>
         <h2>
-          APRIL 18, 2024 <span>&#183;</span> IRELAND
+          APRIL 18, 2024 <span>&#183;</span> MARKREE CASTLE
         </h2>
       </div>
       <div className={styles.section}>
