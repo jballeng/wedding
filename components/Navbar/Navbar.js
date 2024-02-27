@@ -40,10 +40,10 @@ const Navbar = () => {
             Our Story
           </Link>
           <Link href="/travel" className={path == '/travel' ? 'active' : ''} id={styles.aboutUs}>
-            Travel
+            Travel & Stay
           </Link>
-          <Link href="/contact" className={path == '/contact' ? 'active' : ''} id="contactInfo">
-            Contact Info
+          <Link href="/events" className={path == '/travel' ? 'active' : ''} id={styles.aboutUs}>
+            Event Details
           </Link>
           <Link href="/registry" className={path == '/registry' ? 'active' : ''} id="registry">
             Registry
