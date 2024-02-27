@@ -42,7 +42,7 @@ const Navbar = () => {
           <Link href="/travel" className={path == '/travel' ? 'active' : ''} id={styles.aboutUs}>
             Travel & Stay
           </Link>
-          <Link href="/events" className={path == '/travel' ? 'active' : ''} id={styles.aboutUs}>
+          <Link href="/events" className={path == '/events' ? 'active' : ''} id={styles.aboutUs}>
             Event Details
           </Link>
           <Link href="/registry" className={path == '/registry' ? 'active' : ''} id="registry">
