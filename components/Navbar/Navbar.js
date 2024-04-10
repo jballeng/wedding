@@ -33,9 +33,7 @@ const Navbar = () => {
       </div>
       <div className={styles.section}>
         <div className={styles.menuLinks} id='menu-links'>
-          <Link href="/" className={path == '/' ? 'active' : ''}>
-            Home
-          </Link>
+          
           <Link href="/about" className={path == '/about' ? 'active' : ''} id={styles.aboutUs}>
             Our Story
           </Link>
